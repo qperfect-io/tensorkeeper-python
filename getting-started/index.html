@@ -1,0 +1,1154 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Clifford-augmented MPS quantum circuit simulator for MIMIQ">
+      
+      
+      
+        <link rel="canonical" href="https://docs.qperfect.io/tensorkeeper-python/getting-started/">
+      
+      
+        <link rel="prev" href="../concepts/">
+      
+      
+        <link rel="next" href="../execute/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
+    
+    
+      
+        <title>Getting Started - MIMIQ TensorKeeper</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../stylesheets/brand.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#getting-started" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MIMIQ TensorKeeper" class="md-header__button md-logo" aria-label="MIMIQ TensorKeeper" data-md-component="logo">
+      
+  <img src="../assets/octopus.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MIMIQ TensorKeeper
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Getting Started
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MIMIQ TensorKeeper" class="md-nav__button md-logo" aria-label="MIMIQ TensorKeeper" data-md-component="logo">
+      
+  <img src="../assets/octopus.svg" alt="logo">
+
+    </a>
+    MIMIQ TensorKeeper
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choosing-an-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing an engine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From source
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-ways-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two ways in
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Two ways in">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#high-level-execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        High level: execute
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lower-level-build_state-compile-evolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lower level: build_state + compile + evolve
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seeing-the-clifford-frame-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seeing the Clifford frame work
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qubit-and-bit-indices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qubit and bit indices
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../execute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Circuit Execution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accuracy and Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../threads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Threads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../free-threading/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Free-threaded Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../qiskit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qiskit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mock/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Without a licence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choosing-an-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing an engine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From source
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-ways-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two ways in
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Two ways in">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#high-level-execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        High level: execute
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lower-level-build_state-compile-evolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lower level: build_state + compile + evolve
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seeing-the-clifford-frame-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seeing the Clifford frame work
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qubit-and-bit-indices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qubit and bit indices
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h1>
+<p>This page installs the package and runs a circuit through both API paths. If the
+terms <em>Clifford frame</em>, <em>dressed gate</em> or <em>magic</em> are new, read
+<a href="../concepts/">Concepts</a> first; this page assumes them.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Python 3.11 or newer.</li>
+<li><code>mimiqcircuits</code>, which supplies <code>Circuit</code>, the gate set and <code>QCSResults</code>.</li>
+</ul>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<p>Wheels are published on tagged releases. Install with the token that came with
+your licence:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>mimiq-tensorkeeper<span class="w"> </span>--index-url<span class="w"> </span>https://mimiq:&lt;your-token&gt;@license.qperfect.io/pypi/simple
+</code></pre></div>
+<p>The index serves every QPerfect product your licence covers and forwards every
+other name to PyPI, so dependencies resolve from the same URL. To avoid
+repeating it:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>global.index-url<span class="w"> </span>https://mimiq:&lt;your-token&gt;@license.qperfect.io/pypi/simple
+</code></pre></div>
+<p>then <code>pip install mimiq-tensorkeeper</code>. With uv, pass the same URL as
+<code>--index</code>, or set <code>UV_INDEX_URL</code>.</p>
+<p>The distribution is <code>mimiq-tensorkeeper</code>; the package you import is
+<code>tensorkeeper</code>.</p>
+<p>Use <code>--index-url</code>, not <code>--extra-index-url</code>. Public PyPI carries the same name
+as an unlicensed mock (see <a href="../mock/">Without a licence</a>), and with both indexes
+in play pip may take either copy. <code>tk.has_kernels()</code> is <code>True</code> on the licensed
+wheel.</p>
+<p>Wheels exist for:</p>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Python</th>
+<th>Engines</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linux x86_64, glibc 2.35+ and glibc 2.34 (RHEL 9)</td>
+<td>3.11 and later, 3.14t</td>
+<td>OpenBLAS, MKL, faer, CUDA</td>
+</tr>
+<tr>
+<td>macOS arm64 (macOS 26 or newer)</td>
+<td>3.11 and later</td>
+<td>OpenBLAS, faer</td>
+</tr>
+<tr>
+<td>Windows x86_64</td>
+<td>3.11 and later</td>
+<td>MKL, faer</td>
+</tr>
+</tbody>
+</table>
+<p>On Linux x86_64 and Windows the wheel depends on Intel's <code>mkl</code> package, which
+pip installs with it: MKL cannot be bundled into a wheel. For
+<code>TkSimulatorGpu</code>, install the CUDA libraries too; the NVIDIA driver comes from
+the system:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"mimiq-tensorkeeper[cuda]"</span><span class="w"> </span>--index-url<span class="w"> </span>https://mimiq:&lt;your-token&gt;@license.qperfect.io/pypi/simple
+</code></pre></div>
+<p>A free-threaded interpreter (<code>python3.14t</code>) gets its own wheel automatically;
+see <a href="../free-threading/">Free-threaded Python</a>.</p>
+<h3 id="choosing-an-engine">Choosing an engine<a class="headerlink" href="#choosing-an-engine" title="Permanent link">&para;</a></h3>
+<p>The residual MPS runs on a linear algebra library, and each library is a
+separate engine in the wheel. <code>TkSimulator(linalg=...)</code> picks one per
+simulator:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">tensorkeeper</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">available_engines</span><span class="p">())</span>       <span class="c1"># e.g. ['openblas', 'mkl', 'faer', 'cuda']</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">sim</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">TkSimulator</span><span class="p">(</span><span class="n">linalg</span><span class="o">=</span><span class="s2">"mkl"</span><span class="p">)</span>  <span class="c1"># "openblas", "mkl", "faer", or None</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">linalg</span><span class="p">)</span>                   <span class="c1"># the engine it will run on</span>
+</code></pre></div>
+<p><code>linalg=None</code>, the default, takes OpenBLAS where the wheel has it and MKL on
+Windows. MKL is often faster on Intel CPUs; faer is pure Rust, needs nothing
+from the system, and is usually the slowest. All three give the same results to
+rounding. <code>tk.library_info()</code> and <code>tk.compile_info()</code> say what an engine is and
+how it was built; quote them in a bug report.</p>
+<h3 id="from-source">From source<a class="headerlink" href="#from-source" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">cd</span><span class="w"> </span>tensorkeeper-python
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>uv<span class="w"> </span>run<span class="w"> </span>maturin<span class="w"> </span>develop
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>uv<span class="w"> </span>run<span class="w"> </span>pytest<span class="w"> </span>tests/<span class="w"> </span>-q
+</code></pre></div>
+<p><code>maturin develop</code> compiles the OpenBLAS engine and installs the package in
+editable mode. Rebuild it after any change to <code>tensorkeeper-rs</code>. It builds no
+documentation, so <code>tk.docs_dir()</code> is empty there.</p>
+<h2 id="two-ways-in">Two ways in<a class="headerlink" href="#two-ways-in" title="Permanent link">&para;</a></h2>
+<p>TensorKeeper offers the same two paths as any MIMIQ backend.</p>
+<h3 id="high-level-execute">High level: <code>execute</code><a class="headerlink" href="#high-level-execute" title="Permanent link">&para;</a></h3>
+<p><code>execute</code> runs the circuit and returns a <code>QCSResults</code>, handling shots,
+trajectories and measurement bookkeeping for you. Use it unless you need the
+state itself.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">mimiqcircuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">Circuit</span><span class="p">,</span> <span class="n">GateH</span><span class="p">,</span> <span class="n">GateCX</span><span class="p">,</span> <span class="n">Measure</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tensorkeeper</span><span class="w"> </span><span class="kn">import</span> <span class="n">TkSimulator</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">c</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">()</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">c</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">GateH</span><span class="p">(),</span> <span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">c</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">GateCX</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="n">c</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">Measure</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="n">c</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">Measure</span><span class="p">(),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="n">sim</span> <span class="o">=</span> <span class="n">TkSimulator</span><span class="p">(</span><span class="n">bonddim</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="n">results</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">nsamples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">histogram</span><span class="p">())</span>      <span class="c1"># {bs"00": ~500, bs"11": ~500}</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">fidelities</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>    <span class="c1"># 1.0</span>
+</code></pre></div>
+<h3 id="lower-level-build_state-compile-evolve">Lower level: <code>build_state</code> + <code>compile</code> + <code>evolve</code><a class="headerlink" href="#lower-level-build_state-compile-evolve" title="Permanent link">&para;</a></h3>
+<p>These are the three primitives <code>execute</code> is built from. Drive them yourself when
+you want one evolution followed by many queries against the resulting state.
+Nothing is sampled and nothing is hidden.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">mimiqcircuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">BitString</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">c</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">()</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">c</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">GateH</span><span class="p">(),</span> <span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">c</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">GateCX</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="n">sim</span> <span class="o">=</span> <span class="n">TkSimulator</span><span class="p">(</span><span class="n">bonddim</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="n">state</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">build_state</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>                     <span class="c1"># |00&gt;</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="n">state</span><span class="p">,</span> <span class="n">fidelity</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">sim</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">amplitude</span><span class="p">(</span><span class="n">BitString</span><span class="p">(</span><span class="s2">"00"</span><span class="p">)))</span>        <span class="c1"># (0.7071+0j)</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">probability</span><span class="p">(</span><span class="n">BitString</span><span class="p">(</span><span class="s2">"11"</span><span class="p">)))</span>      <span class="c1"># 0.5</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">bond_dim</span><span class="p">)</span>                          <span class="c1"># 1</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="nb">print</span><span class="p">(</span><span class="n">fidelity</span><span class="p">)</span>                                <span class="c1"># ExactFidelity()</span>
+</code></pre></div>
+<p><code>amplitude</code>, <code>probability</code>, the expectation values and <code>sample</code> are all
+non-destructive, so one evolution can answer many questions.</p>
+<p><code>compile</code> is pure: no randomness, no sampling, no state. That is what lets a
+single compiled circuit serve every shot of a run.</p>
+<h2 id="seeing-the-clifford-frame-work">Seeing the Clifford frame work<a class="headerlink" href="#seeing-the-clifford-frame-work" title="Permanent link">&para;</a></h2>
+<p>The point of TensorKeeper is visible in one number. Build a deep Clifford circuit
+and watch the bond dimension stay at 1.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">mimiqcircuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">Circuit</span><span class="p">,</span> <span class="n">GateH</span><span class="p">,</span> <span class="n">GateS</span><span class="p">,</span> <span class="n">GateCX</span><span class="p">,</span> <span class="n">GateCZ</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tensorkeeper</span><span class="w"> </span><span class="kn">import</span> <span class="n">TkSimulator</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">rng</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">Random</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="n">n</span> <span class="o">=</span> <span class="mi">40</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="n">c</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">()</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>    <span class="n">c</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">GateH</span><span class="p">(),</span> <span class="n">q</span><span class="p">)</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">400</span><span class="p">):</span>                            <span class="c1"># 400 random Clifford gates</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>    <span class="k">if</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>        <span class="n">q</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>                <span class="c1"># a neighboring pair</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>        <span class="n">c</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="n">GateCX</span><span class="p">(),</span> <span class="n">GateCZ</span><span class="p">()]),</span> <span class="n">q</span><span class="p">,</span> <span class="n">q</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>        <span class="n">c</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="n">GateH</span><span class="p">(),</span> <span class="n">GateS</span><span class="p">()]),</span> <span class="n">rng</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="n">sim</span> <span class="o">=</span> <span class="n">TkSimulator</span><span class="p">()</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="n">state</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">build_state</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="n">state</span><span class="p">,</span> <span class="n">fidelity</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">sim</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">bond_dim</span><span class="p">)</span>     <span class="c1"># 1: the frame absorbed all 440 gates</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="nb">print</span><span class="p">(</span><span class="n">fidelity</span><span class="p">)</span>           <span class="c1"># ExactFidelity()</span>
+</code></pre></div>
+<p>40 qubits, 440 gates, a state that is highly entangled, and the MPS never left
+<span class="arithmatex">\(\chi = 1\)</span>. A plain MPS simulator would need a bond dimension in the thousands
+for the same circuit.</p>
+<p>Now add magic. A handful of <span class="arithmatex">\(T\)</span> gates on a register this wide is still free:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">mimiqcircuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">GateT</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">8</span><span class="p">):</span>                        <span class="c1"># 5 T gates</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">c</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">GateT</span><span class="p">(),</span> <span class="n">q</span><span class="p">)</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="n">state</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">build_state</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="n">state</span><span class="p">,</span> <span class="n">fidelity</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">sim</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">bond_dim</span><span class="p">)</span>     <span class="c1"># still 1</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">fidelity</span><span class="p">)</span>           <span class="c1"># ExactFidelity()</span>
+</code></pre></div>
+<p>Bond dimension climbs only once enough magic has accumulated, which on <span class="arithmatex">\(n\)</span> qubits
+takes of order <span class="arithmatex">\(n\)</span> non-Clifford gates:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>                              <span class="c1"># a full T layer, 40 more</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="n">c</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">GateT</span><span class="p">(),</span> <span class="n">q</span><span class="p">)</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">state</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">build_state</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">state</span><span class="p">,</span> <span class="n">fidelity</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">sim</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">bond_dim</span><span class="p">)</span>     <span class="c1"># 2: the T gates now cost bond dimension</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">fidelity</span><span class="p">)</span>           <span class="c1"># TruncationLowerBound(value=1.0)</span>
+</code></pre></div>
+<p>Two lessons in those three runs. Cost tracks magic, not depth and not
+entanglement. And the fidelity claim weakened to <code>TruncationLowerBound</code> at the
+first truncating operation even though its value is exactly <code>1.0</code> and no accuracy
+was lost, which is a distinction worth understanding before you rely on the
+number: see <a href="../tuning/#reading-the-fidelity">Accuracy and Tuning</a>.</p>
+<p><code>state.bond_dim</code> is the bond dimension of the residual MPS <span class="arithmatex">\(|\varphi\rangle\)</span>, not
+of the physical state. See
+<a href="../concepts/#what-bond-dimension-means-here">Concepts</a>.</p>
+<h2 id="qubit-and-bit-indices">Qubit and bit indices<a class="headerlink" href="#qubit-and-bit-indices" title="Permanent link">&para;</a></h2>
+<p>Indices are <strong>0-based</strong> in Python, matching <code>mimiqcircuits</code>. <code>c.push(GateH(), 0)</code>
+acts on the first qubit.</p>
+<div class="admonition warning">
+<p class="admonition-title">Bitstring ordering</p>
+<p><code>BitString("01")</code> has qubit 0 set to <code>0</code> and qubit 1 set to <code>1</code>. The leftmost
+character is qubit 0. This is the MIMIQ convention and is the reverse of
+Qiskit's.</p>
+</div>
+<h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../execute/">Circuit Execution</a>: measurement, noise, observables, results.</li>
+<li><a href="../tuning/">Accuracy and Tuning</a>: when to change <code>bonddim</code>, <code>sv_cutoff</code> or
+  <code>disentangle_period</code>.</li>
+<li><a href="../examples/">Examples</a>: runnable scripts in a deliberate order.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  <a class="tw-footer-brand" href="https://www.qperfect.io" title="QPerfect" target="_blank" rel="noopener">
+    <img src="../assets/qperfect-logo-white.svg" alt="QPerfect">
+  </a>
+  
+    <div class="md-copyright__highlight">Copyright &copy; 2025&ndash;2026 QPerfect. All rights reserved.</div>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "content.code.copy", "search.highlight"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
