@@ -1,0 +1,110 @@
+/* Brand typefaces, served with the docs so pages make no third-party requests. */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/Inter.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("fonts/JetBrainsMono.woff2") format("woff2");
+  font-weight: 100 800;
+  font-display: swap;
+}
+
+/* MIMIQ brand for Material for MkDocs: QPerfect palette and type.
+   Material takes only preset palette names in mkdocs.yml, so the palette is
+   set with `primary: custom` / `accent: custom` and defined here. */
+
+:root {
+  --md-text-font: "Inter";
+  --md-code-font: "JetBrains Mono";
+}
+
+[data-md-color-primary="custom"] {
+  /* Navy header with the reverse logo, as on qperfect.io. */
+  --md-primary-fg-color: #0a1419;
+  --md-primary-fg-color--light: #1a2e36;
+  --md-primary-fg-color--dark: #060d11;
+  --md-primary-bg-color: #f4f9fa;
+  --md-primary-bg-color--light: #f4f9fab3;
+}
+
+[data-md-color-accent="custom"] {
+  --md-accent-fg-color: #0e5f6b;
+  --md-accent-fg-color--transparent: #157f8f1a;
+}
+
+[data-md-color-scheme="default"] {
+  --md-default-fg-color: #1a2e36;
+  --md-default-fg-color--light: #5a6f78;
+  --md-typeset-color: #1a2e36;
+  --md-typeset-a-color: #157f8f;
+  --md-code-fg-color: #1a2e36;
+  --md-code-bg-color: #f4f9fa;
+  --md-footer-bg-color: #0a1419;
+  --md-footer-bg-color--dark: #060d11;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: #0a1419;
+  --md-default-fg-color: #e6eef0;
+  --md-default-fg-color--light: #9fb2b9;
+  --md-default-fg-color--lighter: #9fb2b973;
+  --md-default-fg-color--lightest: #9fb2b92e;
+  --md-typeset-color: #e6eef0;
+  --md-typeset-a-color: #4fb8c8;
+  --md-accent-fg-color: #4fb8c8;
+  --md-accent-fg-color--transparent: #4fb8c81a;
+  --md-code-fg-color: #e6eef0;
+  --md-code-bg-color: #0f1e25;
+  --md-footer-bg-color: #060d11;
+  --md-footer-bg-color--dark: #03080a;
+}
+
+[data-md-color-scheme="slate"][data-md-color-primary="custom"] {
+  --md-primary-fg-color: #0f1e25;
+  --md-primary-fg-color--light: #1a2e36;
+  --md-primary-fg-color--dark: #060d11;
+}
+
+.md-header {
+  border-bottom: 1px solid #2a4450;
+}
+
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  height: 1.8rem;
+}
+
+.md-typeset h1, .md-typeset h2, .md-typeset h3,
+.md-typeset h4, .md-typeset h5, .md-typeset h6 {
+  font-family: "Plus Jakarta Sans", var(--md-text-font-family);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.md-typeset h1 {
+  color: var(--md-typeset-color);
+}
+
+.md-typeset .md-button--primary {
+  background-color: #157f8f;
+  border-color: #157f8f;
+  color: #ffffff;
+}
+.md-typeset .md-button--primary:hover {
+  background-color: #0e5f6b;
+  border-color: #0e5f6b;
+}
+
+/* Yellow is a small accent only: the permalink hover. */
+.md-typeset .headerlink:hover {
+  color: #f5bd22;
+}
